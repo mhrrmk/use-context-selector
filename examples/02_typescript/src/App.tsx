@@ -1,17 +1,8 @@
 import React, { StrictMode } from 'react';
 
-import { useValue, MyContext } from './state';
+import { Provider } from './state';
 import Counter from './Counter';
 import Person from './Person';
-
-const Provider: React.FC = ({ children }) => {
-  const [state, dispatch] = useValue();
-  return (
-    <MyContext.Provider value={[state, dispatch]}>
-      {children}
-    </MyContext.Provider>
-  );
-};
 
 const Body = () => (
   <div>

@@ -1,6 +1,6 @@
-import { useReducer } from 'react';
+import React, { useReducer } from 'react';
 
-import { createContext } from 'use-context-selector';
+import { createContext, getContextSelector } from 'use-context-selector';
 
 const initialState = {
   count: 0,
@@ -61,3 +61,14 @@ const reducer = (state: State, action: Action) => {
 export const useValue = () => useReducer(reducer, initialState);
 
 export const MyContext = createContext<[State, Dispatch]>([initialState, () => null]);
+
+export const useMyContextSelector = getContextSelector(MyContext);
+
+export const Provider: React.FC = ({ children }) => {
+  const [state, dispatch] = useValue();
+  return (
+    <MyContext.Provider value= { [state, dispatch]} >
+    { children }
+    </MyContext.Provider>
+  );
+};
