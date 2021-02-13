@@ -266,3 +266,7 @@ export const useBridgeValue = (context: Context<any>) => {
   }
   return bridgeValue as any;
 };
+
+export function getContextSelector<Value>(context: Context<Value>) {
+  return function <Selected>(selector: (value: Value) => Selected) { return useContextSelector(context, selector) }
+}
