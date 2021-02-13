@@ -67,8 +67,8 @@ export const useMyContextSelector = getContextSelector(MyContext);
 export const Provider: React.FC = ({ children }) => {
   const [state, dispatch] = useValue();
   return (
-    <MyContext.Provider value= { [state, dispatch]} >
-    { children }
+    <MyContext.Provider value={[state, dispatch]}>
+      { children }
     </MyContext.Provider>
   );
 };
